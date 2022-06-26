@@ -18,7 +18,16 @@ exports.Query = {
   float: () => 1.23456789,
   isFalse: () => false,
   stringArray: () => ['a', 'b', 'c'],
-  products: () => products,
+  products: (parent, { filter }, { products }) => {
+    let filteredProducts = products;
+    if (filter.onSale) {
+      filteredProducts = filteredProducts.filter((product) => {
+        return product.onSale;
+      });
+    }
+
+    return filteredProducts;
+  },
   product: (parent, args, context) => getSingleProduct(parent, args, context),
   categories: () => categories,
   category: (parent, args, context) => getSingleCategory(parent, args, context),

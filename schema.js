@@ -13,7 +13,7 @@ exports.typeDefs = gql`
     float: Float
     isFalse: Boolean
 
-    products: [Product!]!
+    products(filter: ProductsFilterInput): [Product!]!
     product(id: ID!): Product
     categories: [Category!]!
     category(id: ID!): Category
@@ -45,5 +45,11 @@ exports.typeDefs = gql`
     comment: String!
     rating: Int!
     productId: ID!
+  }
+
+  # Filter inputs
+
+  input ProductsFilterInput {
+    onSale: Boolean
   }
 `;

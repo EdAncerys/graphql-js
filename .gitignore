@@ -1,0 +1,4 @@
+# remove node directory
+node_modules
+# env files
+.env

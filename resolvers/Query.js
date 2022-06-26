@@ -12,22 +12,24 @@ const getSingleCategory = (parent, { id }, { categories }) => {
   return category;
 };
 
+const getProducts = (parent, { filter }, { products }) => {
+  let filteredProducts = products;
+  if (filter.onSale) {
+    filteredProducts = filteredProducts.filter((product) => {
+      return product.onSale;
+    });
+  }
+
+  return filteredProducts;
+};
+
 exports.Query = {
   hello: () => 'Hello world!',
   numberOfRows: () => 100,
   float: () => 1.23456789,
   isFalse: () => false,
   stringArray: () => ['a', 'b', 'c'],
-  products: (parent, { filter }, { products }) => {
-    let filteredProducts = products;
-    if (filter.onSale) {
-      filteredProducts = filteredProducts.filter((product) => {
-        return product.onSale;
-      });
-    }
-
-    return filteredProducts;
-  },
+  products: (parent, args, context) => getProducts(parent, args, context),
   product: (parent, args, context) => getSingleProduct(parent, args, context),
   categories: () => categories,
   category: (parent, args, context) => getSingleCategory(parent, args, context),

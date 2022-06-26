@@ -118,9 +118,10 @@ const typeDefs = gql`
 
 const getSingleProduct = (parent, args, context) => {
   const productId = args.id;
-  console.log('🐞 ', productId); // debug
+  const product = products.find((product) => product.id === productId);
 
-  return data.find((product) => product.id === productId);
+  if (!product) return null;
+  return product;
 };
 
 const resolvers = {
@@ -131,15 +132,7 @@ const resolvers = {
     isFalse: () => false,
     stringArray: () => ['a', 'b', 'c'],
     products: () => products,
-    product: (parent, args, context) => {
-      const productId = args.id;
-      const product = products.find((product) => product.id === productId);
-      console.log('🐞 ', products);
-      console.log('🐞 ', product);
-      if (!product) return null;
-      return product;
-    },
-    // product: (parent, args, context) => getSingleProduct(parent, args, context),
+    product: (parent, args, context) => getSingleProduct(parent, args, context),
   },
 };
 

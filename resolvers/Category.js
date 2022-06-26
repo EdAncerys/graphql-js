@@ -1,5 +1,15 @@
-const getProductsInCategory = ({ id }, args, { products }) => {
-  return products.filter((product) => product.categoryId === id);
+const getProductsInCategory = ({ id }, { filter }, { products }) => {
+  const categoryProducts = products.filter(
+    (product) => product.categoryId === id
+  );
+  let filteredProducts = categoryProducts;
+  if (filter && filter.onSale) {
+    filteredProducts = products.filter((product) => {
+      return product.onSale;
+    });
+  }
+
+  return filteredProducts;
 };
 
 exports.Category = {

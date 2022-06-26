@@ -14,7 +14,7 @@ const getSingleCategory = (parent, { id }, { categories }) => {
 
 const getProducts = (parent, { filter }, { products }) => {
   let filteredProducts = products;
-  if (filter.onSale) {
+  if (filter && filter.onSale) {
     filteredProducts = filteredProducts.filter((product) => {
       return product.onSale;
     });

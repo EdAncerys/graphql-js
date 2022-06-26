@@ -30,12 +30,13 @@ exports.typeDefs = gql`
     image: String!
     category: Category
     reviews: [Review!]!
+    onSale: Boolean!
   }
 
   type Category {
     id: ID!
     name: String!
-    products: [Product!]!
+    products(filter: ProductsFilterInput): [Product!]!
   }
 
   type Review {

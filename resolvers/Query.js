@@ -1,16 +1,11 @@
-const { products, categories } = require('../data');
-// --------------------------------------------------------------------------------
-
-const getSingleProduct = (parent, args, context) => {
-  const { id } = args;
+const getSingleProduct = (parent, { id }, { products }) => {
   const product = products.find((product) => product.id === id);
 
   if (!product) return null;
   return product;
 };
 
-const getSingleCategory = (parent, args, context) => {
-  const { id } = args;
+const getSingleCategory = (parent, { id }, { categories }) => {
   const category = categories.find((category) => category.id === id);
 
   if (!category) return null;

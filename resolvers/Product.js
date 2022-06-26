@@ -1,9 +1,5 @@
-const { categories } = require('../data');
-// --------------------------------------------------------------------------------
-
 exports.Product = {
-  category: (parent, args) => {
-    const { categoryId } = parent;
+  category: ({ categoryId }, args, { categories }) => {
     return categories.find((category) => category.id === categoryId);
   },
 };

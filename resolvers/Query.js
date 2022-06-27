@@ -43,8 +43,11 @@ exports.Query = {
   stringArray: () => ['a', 'b', 'c'],
   products: (parent, args, context) => getProducts(parent, args, context),
   product: (parent, args, context) => getSingleProduct(parent, args, context),
-  categories: (parent, args, { categories }) => {
-    return categories;
+  categories: (parent, args, { db }) => {
+    return db.categories;
+  },
+  reviews: (parent, args, { db }) => {
+    return db.reviews;
   },
   category: (parent, args, context) => getSingleCategory(parent, args, context),
 };

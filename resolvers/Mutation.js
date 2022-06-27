@@ -73,4 +73,17 @@ exports.Mutation = {
 
     return true;
   },
+
+  deleteProduct: (parent, { id }, { db }) => {
+    // Delete products from products collection
+    db.products = db.products.filter((p) => p.id !== id);
+
+    // --------------------------------------------------------------------------------
+    // 📌  Remove reviews associate with deleted product
+    // --------------------------------------------------------------------------------
+
+    db.reviews = db.reviews.filter((r) => r.productId !== id);
+
+    return true;
+  },
 };

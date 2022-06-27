@@ -19,6 +19,7 @@ exports.typeDefs = gql`
     product(id: ID!): Product
     categories: [Category!]!
     category(id: ID!): Category
+    reviews: [Review!]!
   }
 
   #  Define your mutations here
@@ -27,6 +28,7 @@ exports.typeDefs = gql`
     addProduct(input: AddProductInput): Product!
     addReview(input: AddReviewInput): Review!
     deleteCategory(id: ID!): Boolean!
+    deleteProduct(id: ID!): Boolean!
   }
 
   # Define your schema here

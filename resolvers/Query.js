@@ -14,9 +14,21 @@ const getSingleCategory = (parent, { id }, { categories }) => {
 
 const getProducts = (parent, { filter }, { products }) => {
   let filteredProducts = products;
+  // 📌 filter on sale items
   if (filter && filter.onSale) {
     filteredProducts = filteredProducts.filter((product) => {
       return product.onSale;
+    });
+  }
+
+  // 📌 filter on average rating in products
+  if (filter && filter.avgRating) {
+    // check if rating is in a range of 0 to 5
+    const range = [...Array(6).keys()]; // array of avg range
+    if (!range.includes(filter.avgRating)) return null;
+
+    filteredProducts = filteredProducts.filter((product) => {
+      return product.avgRating >= filter.avgRating;
     });
   }
 

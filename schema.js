@@ -2,6 +2,8 @@ const { gql } = require('apollo-server');
 
 // --------------------------------------------------------------------------------
 // 📌  Graph data schema
+// Scaler types and resolvers are defined in the schema.js file
+// Scaler types: String, Int, Float, Boolean
 // --------------------------------------------------------------------------------
 
 exports.typeDefs = gql`
@@ -31,6 +33,7 @@ exports.typeDefs = gql`
     category: Category
     reviews: [Review!]!
     onSale: Boolean!
+    avgRating: Int!
   }
 
   type Category {
@@ -52,5 +55,6 @@ exports.typeDefs = gql`
 
   input ProductsFilterInput {
     onSale: Boolean
+    avgRating: Int
   }
 `;

@@ -10,8 +10,6 @@ const { Category } = require('./resolvers/Category');
 
 // --------------------------------------------------------------------------------
 // 📌  Init Apollo Server
-// Scaler types and resolvers are defined in the schema.js file
-// Scaler types: String, Int, Float, Boolean
 // --------------------------------------------------------------------------------
 
 const server = new ApolloServer({

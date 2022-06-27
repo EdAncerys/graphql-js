@@ -1,19 +1,20 @@
-const getSingleProduct = (parent, { id }, { products }) => {
-  const product = products.find((product) => product.id === id);
+const getSingleProduct = (parent, { id }, { db }) => {
+  const product = db.products.find((product) => product.id === id);
 
   if (!product) return null;
   return product;
 };
 
-const getSingleCategory = (parent, { id }, { categories }) => {
-  const category = categories.find((category) => category.id === id);
+const getSingleCategory = (parent, { id }, { db }) => {
+  const category = db.categories.find((category) => category.id === id);
 
   if (!category) return null;
   return category;
 };
 
-const getProducts = (parent, { filter }, { products }) => {
-  let filteredProducts = products;
+const getProducts = (parent, { filter }, { db }) => {
+  console.log('🐞 ', db);
+  let filteredProducts = db.products;
   // 📌 filter on sale items
   if (filter && filter.onSale) {
     filteredProducts = filteredProducts.filter((product) => {

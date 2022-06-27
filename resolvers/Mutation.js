@@ -13,7 +13,7 @@ exports.Mutation = {
 
     return newCategory;
   },
-  addProduct: (parent, { input }, { products }) => {
+  addProduct: (parent, { input }, { db }) => {
     const { name, description, quantity, price, image, onSale, categoryId } =
       input;
 
@@ -29,7 +29,7 @@ exports.Mutation = {
     };
 
     // Add new product to the list
-    products.push(newProduct);
+    db.products.push(newProduct);
 
     return newProduct;
   },

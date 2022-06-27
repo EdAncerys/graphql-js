@@ -1,10 +1,10 @@
-const getProductsInCategory = ({ id }, { filter }, { products }) => {
-  const categoryProducts = products.filter(
+const getProductsInCategory = ({ id }, { filter }, { db }) => {
+  const categoryProducts = db.products.filter(
     (product) => product.categoryId === id
   );
   let filteredProducts = categoryProducts;
   if (filter && filter.onSale) {
-    filteredProducts = products.filter((product) => {
+    filteredProducts = db.products.filter((product) => {
       return product.onSale;
     });
   }

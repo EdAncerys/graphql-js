@@ -93,4 +93,16 @@ exports.Mutation = {
 
     return true;
   },
+
+  updateCategory: (parent, { id, input }, { db }) => {
+    const index = db.categories.findIndex((c) => c.id === id);
+
+    // Update category data type
+    db.categories[index] = {
+      ...db.categories[index],
+      ...input,
+    };
+
+    return db.categories[index];
+  },
 };

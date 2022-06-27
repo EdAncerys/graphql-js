@@ -30,6 +30,7 @@ exports.typeDefs = gql`
     deleteCategory(id: ID!): Boolean!
     deleteProduct(id: ID!): Boolean!
     deleteReview(id: ID!): Boolean!
+    updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
   }
 
   # Define your schema here
@@ -88,5 +89,9 @@ exports.typeDefs = gql`
     comment: String!
     rating: Int!
     productId: ID!
+  }
+
+  input UpdateCategoryInput {
+    name: String!
   }
 `;

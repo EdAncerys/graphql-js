@@ -29,6 +29,7 @@ exports.typeDefs = gql`
     addReview(input: AddReviewInput): Review!
     deleteCategory(id: ID!): Boolean!
     deleteProduct(id: ID!): Boolean!
+    deleteReview(id: ID!): Boolean!
   }
 
   # Define your schema here

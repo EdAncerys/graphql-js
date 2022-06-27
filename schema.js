@@ -21,6 +21,11 @@ exports.typeDefs = gql`
     category(id: ID!): Category
   }
 
+  #  Define your mutations here
+  type Mutation {
+    addCategory(input: AddCategoryInput): Category!
+  }
+
   # Define your schema here
   type Product {
     id: ID!
@@ -51,10 +56,13 @@ exports.typeDefs = gql`
     productId: ID!
   }
 
-  # Filter inputs
-
+  # Inputs
   input ProductsFilterInput {
     onSale: Boolean
     avgRating: Int
+  }
+
+  input AddCategoryInput {
+    name: String!
   }
 `;

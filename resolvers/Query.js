@@ -13,7 +13,6 @@ const getSingleCategory = (parent, { id }, { db }) => {
 };
 
 const getProducts = (parent, { filter }, { db }) => {
-  console.log('🐞 ', db);
   let filteredProducts = db.products;
   // 📌 filter on sale items
   if (filter && filter.onSale) {

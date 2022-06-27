@@ -28,9 +28,13 @@ exports.typeDefs = gql`
     addProduct(input: AddProductInput): Product!
     addReview(input: AddReviewInput): Review!
     deleteCategory(id: ID!): Boolean!
+    # --------------------------------------------------------------------------------
     deleteProduct(id: ID!): Boolean!
     deleteReview(id: ID!): Boolean!
-    updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
+    # --------------------------------------------------------------------------------
+    updateCategory(id: ID!, input: UpdateCategoryInput!): Category
+    updateProduct(id: ID!, input: UpdateProductInput!): Product
+    updateReview(id: ID!, input: UpdateReviewInput!): Review
   }
 
   # Define your schema here
@@ -79,8 +83,8 @@ exports.typeDefs = gql`
     quantity: Int!
     price: Float!
     image: String!
-    onSale: Boolean!
-    categoryId: ID!
+    onSale: Boolean
+    categoryId: ID
   }
 
   input AddReviewInput {
@@ -93,5 +97,22 @@ exports.typeDefs = gql`
 
   input UpdateCategoryInput {
     name: String!
+  }
+
+  input UpdateProductInput {
+    name: String
+    description: String
+    quantity: Int
+    price: Float
+    inStock: Boolean
+    image: String
+    onSale: Boolean
+  }
+
+  input UpdateReviewInput {
+    date: String
+    title: String
+    comment: String
+    rating: Int
   }
 `;

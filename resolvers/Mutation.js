@@ -96,6 +96,8 @@ exports.Mutation = {
 
   updateCategory: (parent, { id, input }, { db }) => {
     const index = db.categories.findIndex((c) => c.id === id);
+    // break if category not found
+    if (index === -1) return null;
 
     // Update category data type
     db.categories[index] = {
@@ -104,5 +106,33 @@ exports.Mutation = {
     };
 
     return db.categories[index];
+  },
+
+  updateProduct: (parent, { id, input }, { db }) => {
+    const index = db.products.findIndex((p) => p.id === id);
+    // break if product not found
+    if (index === -1) return null;
+
+    // Update category data type
+    db.products[index] = {
+      ...db.products[index],
+      ...input,
+    };
+
+    return db.products[index];
+  },
+
+  updateReview: (parent, { id, input }, { db }) => {
+    const index = db.reviews.findIndex((r) => r.id === id);
+    // break if review not found
+    if (index === -1) return null;
+
+    // Update category data type
+    db.reviews[index] = {
+      ...db.reviews[index],
+      ...input,
+    };
+
+    return db.reviews[index];
   },
 };
